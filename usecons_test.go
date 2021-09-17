@@ -1,4 +1,4 @@
-package usrcons
+package usecons
 
 import "testing"
 
