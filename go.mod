@@ -1,3 +1,3 @@
-module github.com/zoosmand/go-modules
+module github.com/zoosmand/usrcons
 
 go 1.17
