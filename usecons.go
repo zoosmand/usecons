@@ -15,7 +15,7 @@ func Header(header *string) string {
 	var dashes []rune
 
 	for i := 0; i < len; i++ {
-		dashes = append(dashes, '^')
+		dashes = append(dashes, '-')
 	}
 
 	return fmt.Sprintf("\n%s\n%s\n", *header, string(dashes))
