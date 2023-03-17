@@ -22,13 +22,13 @@ func Header(header *string) string {
 }
 
 // Checks input like "12,14,-56,1044"
-// @numbersLine: (string) line to be examined
+// @stringArray: (string) line to be examined
 // @return_0: ([]int16) array with numbers
 // @return_1: (bool) status of operation
-func CheckUserInputNumbersViaComma(numbersLine string) ([]int16, bool) {
+func CommaSeparatedToIntArray(stringArray string) ([]int16, bool) {
 	ok := true
 	var numbers []int16
-	_numbers := strings.Split(numbersLine, ",")
+	_numbers := strings.Split(stringArray, ",")
 
 	if len(_numbers) < 2 {
 		return numbers, false
