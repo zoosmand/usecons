@@ -14,21 +14,34 @@ func TestPrintHeader(t *testing.T) {
 }
 
 // Equal arrays
-func Test1CheckCommaSeparatedIntArray(t *testing.T) {
+func TestCommaSeparatedIntToArrayCorrect(t *testing.T) {
 	intSeparatedArray := "12,14,-56,1046"
 	want := []int16{12, 14, -56, 1046}
 
-	if got, status := CommaSeparatedToIntArray(intSeparatedArray); !(status && reflect.DeepEqual(got, want)) {
-		t.Errorf("CommaSeparatedToIntArray() = %q, want %q", got, want)
+	if got, status := CommaSeparatedIntToArray(intSeparatedArray); !(status && reflect.DeepEqual(got, want)) {
+		t.Errorf("TestCommaSeparatedIntToArrayCorrect() = %q, want %q", got, want)
 	}
 }
 
 // Not qeual arrays
-func Test2CheckCommaSeparatedIntArray(t *testing.T) {
+func TestCommaSeparatedIntToArrayIncorrect(t *testing.T) {
 	intSeparatedArray := "12,14,-56,1044"
 	want := []int16{12, 14, -56, 1046}
 
-	if got, status := CommaSeparatedToIntArray(intSeparatedArray); !(status && !reflect.DeepEqual(got, want)) {
-		t.Errorf("CommaSeparatedToIntArray() = %q, want %q", got, want)
+	if got, status := CommaSeparatedIntToArray(intSeparatedArray); !(status && !reflect.DeepEqual(got, want)) {
+		t.Errorf("TestCommaSeparatedIntToArrayIncorrect() = %q, want %q", got, want)
+	}
+}
+
+// Not qeual arrays
+
+func TestGenerateIntArray(t *testing.T) {
+	arr := GenerateIntArray(10)
+	threshold := 999
+
+	for i := 0; i < len(arr); i++ {
+		if arr[i] > threshold {
+			t.Errorf("An array item (%v) with index %v is more than allowed threshold (%v)", arr[i], i, threshold)
+		}
 	}
 }

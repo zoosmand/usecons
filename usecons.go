@@ -2,13 +2,14 @@ package usecons
 
 import (
 	"fmt"
+	"math/rand"
 	"strconv"
 	"strings"
 	"unicode/utf8"
 )
 
-// Prints header of task.
-// @header: (string) line to be printed as header
+// Prints a looking good header
+// @header: (string) Header text to print
 // @return: none
 func Header(header *string) string {
 	len := utf8.RuneCountInString(*header)
@@ -21,11 +22,12 @@ func Header(header *string) string {
 	return fmt.Sprintf("\n%s\n%s\n", *header, string(dashes))
 }
 
-// Checks input like "12,14,-56,1044"
+// Return int16 array from comma separated integers from string
+// something like this "12,14,-56,1044"
 // @stringArray: (string) line to be examined
-// @return_0: ([]int16) array with numbers
-// @return_1: (bool) status of operation
-func CommaSeparatedToIntArray(stringArray string) ([]int16, bool) {
+// @return_0: ([]int16) Array with numbers
+// @return_1: (bool) Atatus of operation
+func CommaSeparatedIntToArray(stringArray string) ([]int16, bool) {
 	ok := true
 	var numbers []int16
 	_numbers := strings.Split(stringArray, ",")
@@ -45,4 +47,15 @@ func CommaSeparatedToIntArray(stringArray string) ([]int16, bool) {
 		}
 	}
 	return numbers, ok
+}
+
+// Generated an array of integers of requested size
+// @length: (int) Length (size) of the generating array
+// @return: ([]int)
+func GenerateIntArray(length int) []int {
+	arr := make([]int, length)
+	for i := 0; i < length; i++ {
+		arr[i] = rand.Intn(999)
+	}
+	return arr
 }
