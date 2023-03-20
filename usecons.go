@@ -22,11 +22,11 @@ func Header(header *string) string {
 	return fmt.Sprintf("\n%s\n%s\n", *header, string(dashes))
 }
 
-// Return int16 array from comma separated integers from string
-// something like this "12,14,-56,1044"
+// Converts int16 array from comma-separated integers string to an array
+// in this manner: "12,14,-56,1044" -> [12, 14, -56, 1044]
 // @stringArray: (string) line to be examined
 // @return_0: ([]int16) Array with numbers
-// @return_1: (bool) Atatus of operation
+// @return_1: (bool) Status of result
 func CommaSeparatedIntToArray(stringArray string) ([]int16, bool) {
 	ok := true
 	var numbers []int16
@@ -49,13 +49,24 @@ func CommaSeparatedIntToArray(stringArray string) ([]int16, bool) {
 	return numbers, ok
 }
 
-// Generated an array of integers of requested size
+// Generates an array of integers with the requested length (size)
 // @length: (int) Length (size) of the generating array
-// @return: ([]int)
+// @return: ([]int) Requested size array
 func GenerateIntArray(length int) []int {
 	arr := make([]int, length)
 	for i := 0; i < length; i++ {
 		arr[i] = rand.Intn(999)
 	}
 	return arr
+}
+
+// Generates a square matrix of integers with the requested level
+// @level: (int) Length (size) of the generating array
+// @return: ([]int) Requested size array
+func GenerateIntSquareMatrix(level int) [][]int {
+	m := [][]int{}
+	for i := 0; i < level; i++ {
+		m = append(m, GenerateIntArray(level))
+	}
+	return n
 }
