@@ -68,5 +68,5 @@ func GenerateIntSquareMatrix(level int) [][]int {
 	for i := 0; i < level; i++ {
 		m = append(m, GenerateIntArray(level))
 	}
-	return n
+	return m
 }

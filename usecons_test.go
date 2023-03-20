@@ -33,8 +33,6 @@ func TestCommaSeparatedIntToArrayIncorrect(t *testing.T) {
 	}
 }
 
-// Not qeual arrays
-
 func TestGenerateIntArray(t *testing.T) {
 	arr := GenerateIntArray(10)
 	threshold := 999
@@ -43,5 +41,14 @@ func TestGenerateIntArray(t *testing.T) {
 		if arr[i] > threshold {
 			t.Errorf("An array item (%v) with index %v is more than allowed threshold (%v)", arr[i], i, threshold)
 		}
+	}
+}
+
+func TestGenerateIntSquareMatrix(t *testing.T) {
+	level := 5
+	m := GenerateIntSquareMatrix(level)
+
+	if len(m) != level || len(m[0]) != level {
+		t.Errorf("The generated matrix level (%v) is inconsistent", level)
 	}
 }
