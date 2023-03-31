@@ -52,3 +52,12 @@ func TestGenerateIntSquareMatrix(t *testing.T) {
 		t.Errorf("The generated matrix level (%v) is inconsistent", level)
 	}
 }
+
+func TestGenerateIntMatrix(t *testing.T) {
+	h, w := 5, 4
+	m := GenerateIntMatrix(h, w)
+
+	if len(m) != h || len(m[0]) != w {
+		t.Errorf("The generated matrix (%vx%v) is inconsistent", h, w)
+	}
+}

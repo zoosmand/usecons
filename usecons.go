@@ -61,12 +61,24 @@ func GenerateIntArray(length int) []int {
 }
 
 // Generates a square matrix of integers with the requested level
-// @level: (int) Length (size) of the generating array
+// @level: (int) Length (size) of the matrix
 // @return: ([]int) Requested size array
 func GenerateIntSquareMatrix(level int) [][]int {
 	m := [][]int{}
 	for i := 0; i < level; i++ {
 		m = append(m, GenerateIntArray(level))
+	}
+	return m
+}
+
+// Generates a matrix of integers with the requested levels
+// @h: (int) Height (number of rows) of the matrix
+// @w: (int) Width (number of columns) of the matrix
+// @return: ([]int) Requested size array
+func GenerateIntMatrix(h int, w int) [][]int {
+	m := [][]int{}
+	for i := 0; i < h; i++ {
+		m = append(m, GenerateIntArray(w))
 	}
 	return m
 }
